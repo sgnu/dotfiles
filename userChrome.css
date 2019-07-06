@@ -29,16 +29,18 @@ WINDOWS UWP DRAG BAR
 - - - COLORS
 ################# */
 /*   var(--tab-bg) */
-  --alt-bg: #232530 !important;          /* tab bg (selected) */
+  --alt-bg: #efefef !important;          /* tab bg (selected) */
   
-  --url-bg: #232530 !important;          /* nav bar/url section */
-  --browser-bg: #1C1E26 !important;   /* tabs (unselected) + background */
+  --url-bg: #efefef !important;          /* nav bar/url section */
+  --browser-bg: #efefef !important;   /* tabs (unselected) + background */
 
-  --main-text: #ffffffed !important;       /* tab text */
-  --secondary-text: #ffffffaf !important;  /* selected tab text*/
-  --third-text: #ffffff69 !important;      /* url bar text*/
+  --main-text: #272727 !important;       /* tab text */
+  --secondary-text: #272727af !important;  /* selected tab text*/
+  --third-text: #272727a1 !important;      /* url bar text*/
 
   --debug-color: rgba(255, 0, 0, 0.5) !important;
+  
+  --url-font-family: 'SF Mono' !important;
 
 
 /* #################
@@ -46,13 +48,13 @@ WINDOWS UWP DRAG BAR
 ################# */
   --chrome-background-color: var(--browser-bg) !important;
   
+  --chrome-content-seperator-color: none !important;
+  
   /* remove 1px line under background tabs */
-  --toolbox-border-bottom-color: white !important;
-  /* remove border around url bar */        
+  --toolbox-border-bottom-color: transparent !important;
+  /* remove border around url bar */
   --chrome-nav-bar-controls-border-color: transparent !important;
 } 
-
-
 
 /* #################
 - - - NAV BAR
@@ -63,13 +65,13 @@ WINDOWS UWP DRAG BAR
   background: var(--url-bg) !important; /* bg, same as url bar */
 
   /* Round buttons on hover*/
-  --toolbarbutton-border-radius: 12px !important;
-} 
+/*   --toolbarbutton-border-radius: 12px !important; */
+}
 
 
 /* Make Toolbar Buttons Grayscale */
 .toolbarbutton-1 {
-  filter: grayscale(100%) brightness(1000%) invert(10%) !important;
+  filter: grayscale(100%) brightness(50%) invert(0%) opacity(90%) !important;
 }
 
 
@@ -79,7 +81,7 @@ WINDOWS UWP DRAG BAR
 
 #urlbar {
   /* No full url */
-  /* -moz-binding: url("bindings.xml#urlbar") !important; */
+/*   -moz-binding: url("bindings.xml#urlbar") !important; */
 
   /* Color */
   color: var(--third-text) !important;   /* text */
@@ -87,13 +89,14 @@ WINDOWS UWP DRAG BAR
   border: none !important;
   box-shadow: none !important;
   border-radius: 16px !important;
-  /*max-width: 474px !important;*/
+/*   max-width: 474px !important; */
+  font-family: var(--url-font-family);
 }
 /* Center */
 #urlbar .urlbar-input-box {
-/* 	text-align: center; */
+	text-align: center;
 /*   margin-bottom: 1px; */
-  /*margin-left: -53px !important;*/
+/*   margin-left: -53px !important; */
   box-shadow: none !important;
   margin-left: 0px !important;
   margin-right: 0px !important;
@@ -163,7 +166,7 @@ WINDOWS UWP DRAG BAR
 
 /* Unhide when hovering/active */
 #identity-box:hover {
-  color: var(--secondary-text) !important;    
+  color: var(--secondary-text) !important;
 }
 #identity-box[open="true"] {
   color: var(--secondary-text) !important;    
@@ -190,15 +193,20 @@ WINDOWS UWP DRAG BAR
 
 /* Unselected Color */
 #TabsToolbar {
-  background-color: var(--browser-bg);
-  border: none;
+  background-color: var(--browser-bg) !important;
+  border: none !important;;
+  border-bottom: 0px transparent !important;
   box-shadow: none !important;
   color: var(--main-text) !important;      /*text color*/
   z-index: 100;
 }
 
+.tab-background {
+  background-color: var(--browser-bg) !important;
+}
+
 /* Selected Color */
-.tab-background[selected="true"] {
+.tab-background[selected] {
   background-attachment: none!important;
   background-color: var(--alt-bg) !important; /* bg color */
   background-image: none!important;
@@ -215,7 +223,7 @@ WINDOWS UWP DRAG BAR
 
 /* Close tab color */
 #TabsToolbar .close-icon {
-  filter: opacity(17%) !important;
+  filter: opacity(25%) !important;
 }
 
 /* FAVICONS Color */
@@ -239,20 +247,23 @@ WINDOWS UWP DRAG BAR
   /*display: none !important;*/
 }
 
-/* Unhide the tab close button on hover
-#TabsToolbar .close-icon {
+/* Unhide the tab close button on hover */
+/* #TabsToolbar .close-icon {
   display: none !important;
 }
 #TabsToolbar .tabbrowser-tab:hover .close-icon {
   visibility: visible !important;
-}
-*/
+} */
+
 
 /* tab line - adjust color & size, default #0a84ff 2px */
-/* .tab-line {
-  background-color: #0a84ff !important;
-  height: 0px !important;
-} */
+.tab-line {
+  height: 2px !important;
+}
+
+.tab-line[selected] {
+  background: linear-gradient(32deg, #a03a57 10%, #a87589 130%) !important;
+}
 
 /*Remove border between tabs */
 .tabbrowser-tab::after, .tabbrowser-tab::before {
@@ -329,27 +340,39 @@ WINDOWS UWP DRAG BAR
   /*** ICONS AND BUTTONS ***/
   display: none !important;
 }
-#dropmarker-icon,
-
 
 /* #################
 - SIZE & LOCATIONS
 ################# */
 
 /* Move Tab-bar beside Nav-bar */
+.titlebar-spacer {
+  border: none !important;
+  width: 0 !important;
+}
+
+.toolbar-items {
+  margin-left: calc(45vw - 67px) !important;
+  margin-bottom: -2px;
+}
+
 #TabsToolbar {
+  border: none !important;
   margin-bottom: 0px !important;             
-  margin-top: 0px !important;               
-  margin-left: 0vw !important;
-  margin-right: 20px !important;
+  margin-top: 0px !important;
+  margin-left: 0 !important;
+  margin-right: 32px !important;
 /*   max-height: 32px !important; */
 }
 #nav-bar {
   margin-bottom: -1px !important;            /* remove navbar bottom 1px border */
-  margin-top: 0px !important;
-  margin-right: 0vw !important; 
+  margin-top: -32px !important;
+  padding-left: 75px;
+  margin-left: 0px;
+  margin-right: 55vw !important;
   border: none !important;
   box-shadow: none !important;
+  height: 34px;
 }
 /* Remove padding above tabbar in compact mode */
 #main-window[sizemode="normal"] > #titlebar {
@@ -359,9 +382,10 @@ WINDOWS UWP DRAG BAR
 #back-button > .toolbarbutton-icon,
 #forward-button > .toolbarbutton-icon {
   transform: scale(0.9, 0.9) !important;
-  margin-left: -2px !important;
-  margin-right: -2px !important; 
+  margin-left: 0px !important;
+  margin-right: 0px !important; 
 }
+
 /* Move hamburger menu to the left */
 #PanelUI-button,
 #customization-panel-container,
@@ -382,7 +406,7 @@ WINDOWS UWP DRAG BAR
 }  
 /* Tabs */
 .tabbrowser-tab {
-  height: 32px !important; 
+  height: 34px !important; 
 }
 .tab-content[pinned] {
   padding: 0 8px !important;
@@ -402,14 +426,13 @@ Delete this rule if you need a space to drag the window*/
   list-style-image: url(buttons/nofocus.png) !important;
  } */
 
- 
  .titlebar-min {
   padding: 0px  !important;
   padding-left:  0px !important;
   padding-right: 0px !important;
 
   margin-left: 0px !important;
-  margin-right: -2px !important;
+  margin-right: 0px !important;
   margin-top: 0px  !important;
   margin-bottom: 0px  !important;
 
@@ -575,4 +598,12 @@ https://www.jeffersonscher.com/gm/url-bar-tweaks.html
 
 #PanelUI-button {
   border: none !important;
+}
+
+#nav-bar-overflow-button {
+  filter: grayscale(100%) invert(100%) opacity(50%) !important;
+}
+
+html {
+  background-color: blue !important;
 }
