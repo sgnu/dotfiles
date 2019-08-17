@@ -29,14 +29,15 @@ WINDOWS UWP DRAG BAR
 - - - COLORS
 ################# */
 /*   var(--tab-bg) */
-  --alt-bg: #efefef !important;          /* tab bg (selected) */
+  --alt-bg: #252530 !important;          /* tab bg (selected) */
   
-  --url-bg: #efefef !important;          /* nav bar/url section */
-  --browser-bg: #efefef !important;   /* tabs (unselected) + background */
+  --url-bg: #252530 !important;          /* nav bar/url section */
+  --browser-bg: #252530 !important;   /* tabs (unselected) + background */
+  --search-bg: #21212b !important;  /* search bar */
 
-  --main-text: #272727 !important;       /* tab text */
-  --secondary-text: #272727af !important;  /* selected tab text*/
-  --third-text: #272727a1 !important;      /* url bar text*/
+  --main-text: #eeeeeeaf !important;       /* tab text */
+  --secondary-text: #eeeeee !important;  /* selected tab text*/
+  --third-text: #eeeeeea1 !important;      /* url bar text*/
 
   --debug-color: rgba(255, 0, 0, 0.5) !important;
   
@@ -65,13 +66,13 @@ WINDOWS UWP DRAG BAR
   background: var(--url-bg) !important; /* bg, same as url bar */
 
   /* Round buttons on hover*/
-/*   --toolbarbutton-border-radius: 12px !important; */
+  --toolbarbutton-border-radius: 12px !important;
 }
 
 
 /* Make Toolbar Buttons Grayscale */
 .toolbarbutton-1 {
-  filter: grayscale(100%) brightness(50%) invert(0%) opacity(90%) !important;
+  filter: grayscale(100%) brightness(100%) invert(0%) opacity(90%) !important;
 }
 
 
@@ -85,21 +86,22 @@ WINDOWS UWP DRAG BAR
 
   /* Color */
   color: var(--third-text) !important;   /* text */
-  background: var(--alt-url-bg) !important; /* bg */
+  background: var(--search-bg) !important;
   border: none !important;
   box-shadow: none !important;
   border-radius: 16px !important;
-/*   max-width: 474px !important; */
+/*   max-width: 800px !important; */
   font-family: var(--url-font-family);
+  margin: 0 auto !important;
+  padding: 0 8px !important;
 }
+
 /* Center */
 #urlbar .urlbar-input-box {
 	text-align: center;
 /*   margin-bottom: 1px; */
 /*   margin-left: -53px !important; */
   box-shadow: none !important;
-  margin-left: 0px !important;
-  margin-right: 0px !important;
 }
 
 /*
@@ -107,22 +109,17 @@ WINDOWS UWP DRAG BAR
  * http://forums.mozillazine.org/viewtopic.php?p=14404121#p14404121
  */
 
- #urlbar {
-  /* position: relative; */
-  z-index: 1;
-}
-
 #identity-box:after {
-  content: '';
-  /* position: absolute; */
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: -1;
-  background: transparent;
-  opacity: 0.2;
+/*   content: ''; */
+/*   position: absolute; */
+/*   height: 100%; */
+/*   width: 100%; */
+/*   top: 0; */
+/*   left: 0; */
+/*   pointer-events: none; */
+/*   z-index: -1; */
+/*   background: blue; */
+/*   opacity: 0.2; */
 }
 
 /* uBlock Origin Dashboard */
@@ -154,15 +151,9 @@ WINDOWS UWP DRAG BAR
   background: #f30323;  /* Firefox Red 70 */
 }
 
-#identity-box {
-  background: rgb(255, 0, 0, 0) !important; /* REMOVE ALPHA TO DEBUG*/
-  color: rgba(0, 0, 0, 0) !important;
-  width: 0px !important;
-}
-
-#identity-box > * {
+/* #identity-box > * {
   margin: 0 auto;
-}
+} */
 
 /* Unhide when hovering/active */
 #identity-box:hover {
@@ -173,7 +164,7 @@ WINDOWS UWP DRAG BAR
 }
 #tracking-protection-icon-animatable-box, #connection-icon
 {
-  opacity: 0 !important;
+/*   opacity: 0 !important; */
 }
 #identity-box:hover #tracking-protection-icon-animatable-box, #identity-box[open="true"] #tracking-protection-icon-animatable-box, #identity-box:hover #connection-icon, #identity-box[open="true"] #connection-icon
 {
@@ -194,7 +185,7 @@ WINDOWS UWP DRAG BAR
 /* Unselected Color */
 #TabsToolbar {
   background-color: var(--browser-bg) !important;
-  border: none !important;;
+  border: none !important;
   border-bottom: 0px transparent !important;
   box-shadow: none !important;
   color: var(--main-text) !important;      /*text color*/
@@ -209,8 +200,9 @@ WINDOWS UWP DRAG BAR
 .tab-background[selected] {
   background-attachment: none!important;
   background-color: var(--alt-bg) !important; /* bg color */
-  background-image: none!important;
+  background-image: none !important;
 }
+
 #TabsToolbar .tabbrowser-tab[selected] {
   color: var(--secondary-text) !important;   /*text color*/
 }
@@ -230,7 +222,7 @@ WINDOWS UWP DRAG BAR
 /* Default */
 .tab-icon-image
 {
-  filter: grayscale(20%) opacity(50%) !important;
+  filter: grayscale(20%) opacity(40%) !important;
   /*display: none !important;*/
 }
 /* Selected */
@@ -258,7 +250,9 @@ WINDOWS UWP DRAG BAR
 
 /* tab line - adjust color & size, default #0a84ff 2px */
 .tab-line {
-  height: 2px !important;
+  height: 4px !important;
+  border-radius: 2px;
+  margin-top: 32px;
 }
 
 .tab-line[selected] {
@@ -352,7 +346,7 @@ WINDOWS UWP DRAG BAR
 }
 
 .toolbar-items {
-  margin-left: calc(45vw - 67px) !important;
+/*   margin-left: calc(45vw - 67px) !important; */
   margin-bottom: -2px;
 }
 
@@ -362,17 +356,17 @@ WINDOWS UWP DRAG BAR
   margin-top: 0px !important;
   margin-left: 0 !important;
   margin-right: 32px !important;
-/*   max-height: 32px !important; */
+  max-height: 32px !important;
 }
 #nav-bar {
   margin-bottom: -1px !important;            /* remove navbar bottom 1px border */
-  margin-top: -32px !important;
-  padding-left: 75px;
-  margin-left: 0px;
-  margin-right: 55vw !important;
+  padding-left: 16px;
+  padding-right: 16px;
+/*   margin-left: 0px; */
+/*   margin-right: 55vw !important; */
   border: none !important;
   box-shadow: none !important;
-  height: 34px;
+  height: 32px;
 }
 /* Remove padding above tabbar in compact mode */
 #main-window[sizemode="normal"] > #titlebar {
@@ -391,7 +385,7 @@ WINDOWS UWP DRAG BAR
 #customization-panel-container,
 #customization-panelWrapper .panel-arrow { 
   -moz-box-ordinal-group: 0 !important;
-  margin-right: -6px !important;
+/*   margin-right: -6px !important; */
 }
 #appMenu-popup {
   margin-right: -258px !important;
@@ -601,9 +595,5 @@ https://www.jeffersonscher.com/gm/url-bar-tweaks.html
 }
 
 #nav-bar-overflow-button {
-  filter: grayscale(100%) invert(100%) opacity(50%) !important;
-}
-
-html {
-  background-color: blue !important;
+  filter: grayscale(100%) invert(100%) opacity(70%) !important;
 }
