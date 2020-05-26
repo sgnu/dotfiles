@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Destination folder for upscaled images
+DESTINATION="$HOME/walls"
+
+# Download image to tmp folder
+curl $1 > /tmp/image.png
+
+# Upscale and de-noise using waifu2x
+waifu2x -noise_level 1 -i /tmp/image.png -o "$DESTINATION/$2"
+
+# Remove old image from tmp folder
+rm /tmp/
