@@ -1,0 +1,1 @@
+/home/sgnu/.oh-my-zsh/custom/themes/sgnu.zsh-theme
