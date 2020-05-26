@@ -7,7 +7,8 @@ DESTINATION="$HOME/walls"
 curl $1 > /tmp/image.png
 
 # Upscale and de-noise using waifu2x
-waifu2x -noise_level 1 -i /tmp/image.png -o "$DESTINATION/$2"
+waifu2x -noise_level 1 -i /tmp/image.png -o "$DESTINATION/$2.png"
 
 # Remove old image from tmp folder
 rm /tmp/image.png
+
