@@ -10,4 +10,4 @@ curl $1 > /tmp/image.png
 waifu2x -noise_level 1 -i /tmp/image.png -o "$DESTINATION/$2"
 
 # Remove old image from tmp folder
-rm /tmp/
+rm /tmp/image.png
